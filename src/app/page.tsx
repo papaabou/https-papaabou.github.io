@@ -1,0 +1,485 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import React from 'react'
+import { ExternalLink } from 'lucide-react'
+import { PartnerLogo } from '@/components/PartnerLogo'
+import { ArtistPhoto } from '@/components/ArtistPhoto'
+import { featuredArtists } from '@/data/artists'
+
+export const metadata: Metadata = {
+  title: 'XKSPROD | Studio premium audiovisuel & artistique',
+  description:
+    'Studio premium de production audiovisuelle, management d’artistes et événements live. Expériences narratives, direction artistique et exécution maîtrisée.',
+}
+
+const services = [
+  {
+    title: 'Production audiovisuelle',
+    desc: 'Films de marque, captations live, campagnes artistiques et contenus premium conçus pour durer.',
+    tags: ['Films', 'Campagnes', 'Captation', 'Post‑prod'],
+  },
+  {
+    title: 'Management & direction artistique',
+    desc: 'Accompagnement créatif, structuration d’image et développement de projets d’artistes.',
+    tags: ['Identité', 'Stratégie', 'Brand', 'Mentoring'],
+  },
+  {
+    title: 'Événements live & expériences',
+    desc: 'Conception et orchestration d’expériences immersives qui marquent le public.',
+    tags: ['Scénographie', 'Live', 'Show', 'Immersif'],
+  },
+]
+
+const companyStory = {
+  title: 'Depuis plus de 10 ans, nous produisons des artistes et des spectacles qui marquent.',
+  body:
+    'XKSPROD réunit des professionnels expérimentés, tous guidés par la même exigence: vous écouter, comprendre vos besoins et créer l’outil de communication qui vous correspond réellement.',
+  body2:
+    'Quel que soit votre projet, nous vous conseillons et vous accompagnons pour construire ensemble un événement unique.',
+}
+
+const steps = [
+  {
+    title: 'Immersion & intention',
+    body: 'On écoute, on décante, on définit un angle clair. L’objectif n’est pas de faire plus, mais de faire juste.',
+  },
+  {
+    title: 'Narration & direction',
+    body: 'On structure une histoire et un langage visuel cohérents, pensés pour votre audience réelle.',
+  },
+  {
+    title: 'Production maîtrisée',
+    body: 'Une exécution précise, une équipe calibrée, des process fluides et un contrôle qualité constant.',
+  },
+  {
+    title: 'Amplification & durée',
+    body: 'Des livrables optimisés pour durer, se décliner et amplifier votre impact sur le long terme.',
+  },
+]
+
+const works = [
+  {
+    title: 'Le Samba Show — Églingué le Cinéma',
+    meta: 'Show événementiel · Mars 2013 · Folies Bergère',
+    desc: 'Production complète du show, direction artistique, coordination plateau et communication visuelle.',
+    image: '/home/works/prod11.jpg',
+  },
+  {
+    title: 'Le Samba Show — Dîner Spectacle',
+    meta: 'Format premium · Décembre 2014 · Cabaret Sauvage',
+    desc: 'Concept événementiel premium mêlant scène, ambiance et expérience immersive à forte valeur public.',
+    image: '/home/works/prod12.jpg',
+  },
+  {
+    title: 'Dakar Fait Sa Comedy',
+    meta: 'Grand format humour · Mars 2018 · Dakar',
+    desc: 'Production show de grande audience, orchestration artistique et déploiement de communication terrain + digital.',
+    image: '/home/works/prod14.png',
+  },
+]
+
+const testimonials = [
+  {
+    quote:
+      'XKSPROD a donné une forme claire à notre univers. Tout était précis, fluide, et d’un niveau rare.',
+    name: 'Directrice artistique, Maison Éclipse',
+  },
+  {
+    quote:
+      'Le résultat a dépassé nos attentes. Ils comprennent la vision et savent l’exécuter avec rigueur.',
+    name: 'Producteur, Live Nocturne',
+  },
+]
+
+const offerTiers = [
+  {
+    name: 'Sprint Créatif',
+    duration: '2 à 3 semaines',
+    fit: 'Pour lancer une campagne ou un format test rapidement.',
+  },
+  {
+    name: 'Production Signature',
+    duration: '4 à 8 semaines',
+    fit: 'Pour un film de marque, une série live ou un dispositif complet.',
+  },
+  {
+    name: 'Partenariat Long Terme',
+    duration: 'Trimestriel / Annuel',
+    fit: 'Pour structurer un calendrier éditorial et une direction artistique continue.',
+  },
+]
+
+const faqItems = [
+  {
+    q: 'Travaillez-vous uniquement avec des artistes ?',
+    a: 'Non. Nous accompagnons aussi des marques, agences et institutions qui veulent produire des contenus exigeants.',
+  },
+  {
+    q: 'Pouvez-vous gérer un projet de A à Z ?',
+    a: 'Oui. Cadrage, direction artistique, production, post-production et livraison sont couverts par la même équipe.',
+  },
+  {
+    q: 'Comment démarre une collaboration ?',
+    a: 'On commence par un call de 30 minutes puis on envoie une proposition claire avec budget, planning et livrables.',
+  },
+  {
+    q: 'Intervenez-vous hors France ?',
+    a: 'Oui. Le studio opère en France et en Europe selon le format du projet.',
+  },
+]
+
+const partners = [
+  {
+    name: 'MyTeleVision',
+    mark: 'MYTELEVISION',
+    logo: '/partners/mytelevision.png',
+    href: 'https://www.mytelevision.tv/',
+  },
+  { name: 'D5tv', mark: 'D5 TV', logo: '/partners/d5tv.png', href: 'https://www.d5tv.fr/' },
+  { name: 'D5music', mark: 'D5 MUSIC', logo: '/partners/d5music.png', href: 'https://d5music.tv/' },
+  { name: 'MyComedy', mark: 'MY COMEDY', logo: '/partners/mycomedy.png', href: 'https://mycomedy.fr/' },
+  { name: 'Galsen', mark: 'Galsen', logo: '/partners/galsen.png', href: 'https://www.galsen.com/' },
+  { name: 'XKSMusic', mark: 'XKS MUSIC', logo: '/partners/xksmusic.png', href: 'https://xksmusic.com/' },
+  { name: 'XKSApps', mark: 'XKS Apps', logo: '/partners/xksapps.png', href: 'https://www.xksapps.com/' },
+  { name: 'XKSDigital', mark: 'XKS Digital', logo: '/partners/xksdigital.png', href: 'https://xksdigital.com/' },
+  {
+    name: 'Le Samba Show',
+    mark: 'Le Samba Show',
+    logo: '/partners/lesambashow.png',
+    href: 'https://www.lesambashow.com/',
+  },
+  {
+    name: 'Dakar Fait Sa Comedy',
+    mark: 'Dakar Fait Sa Comedy',
+    logo: '/partners/dkfsc.png',
+    href: 'https://www.dakarfaitsacomedy.com/',
+  },
+  {
+    name: 'MyComedyJam',
+    mark: 'MyComedyJam',
+    logo: '/partners/mycomedyjam.png',
+    href: 'https://www.mycomedyjam.com/',
+  },
+]
+
+const organizationLdJson = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'XKSPROD',
+  url: 'https://www.xksprod.com',
+  description:
+    'Studio premium de production audiovisuelle, management d’artistes et événements live.',
+  areaServed: 'Europe',
+}
+
+export default function HomePage() {
+  return (
+    <main className="bg-cinema text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLdJson) }}
+      />
+      <section className="relative overflow-hidden pt-16 md:pt-24 pb-20 md:pb-32">
+        <div className="absolute inset-0 hero-frame" />
+        <div className="absolute inset-0 vignette" />
+        <div className="absolute inset-0 noise" />
+
+        <div className="container relative z-10">
+          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center">
+            <div className="stack-xl">
+              <div className="flex items-center gap-3">
+                <span className="pulse-dot" />
+                <span className="eyebrow">Production d’artistes & spectacles</span>
+              </div>
+
+              <div className="stack-lg">
+                <h1 className="title-display tracking-tight">
+                  XKSPROD, depuis plus de 12 ans, nous produisons des artistes et des spectacles.
+                </h1>
+                <p className="lead max-w-[38rem]">
+                  Une équipe de professionnels expérimentés à votre écoute, pour créer l’outil de
+                  communication qui vous correspond et réaliser avec vous un événement unique.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  className="btn-gold inline-flex items-center justify-center rounded-full px-6 py-3 text-sm tracking-wide"
+                  data-track-event="hero_cta_click"
+                  data-track-location="hero"
+                  data-track-label="demarrer_un_projet"
+                >
+                  Démarrer un projet
+                </Link>
+                <Link
+                  href="/posts"
+                  className="btn-ghost inline-flex items-center justify-center rounded-full px-6 py-3 text-sm tracking-wide"
+                  data-track-event="hero_cta_click"
+                  data-track-location="hero"
+                  data-track-label="voir_productions"
+                >
+                  Voir nos productions
+                </Link>
+              </div>
+
+              <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.22em] text-white/60">
+                <span>12+ ans d’expertise</span>
+                <span>Écoute client</span>
+                <span>Accompagnement sur-mesure</span>
+                <span>Événements uniques</span>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-6 film-burn" />
+              <div className="relative grid gap-4">
+                <div className="card glass p-6 gold-outline">
+                  <div className="eyebrow mb-3">Signature</div>
+                  <p className="text-lg">
+                    Quel que soit votre projet, nous vous conseillons et vous accompagnons pour livrer
+                    un résultat premium, clair et efficace.
+                  </p>
+                </div>
+                <div className="rounded-[1.4rem] h-56 md:h-64 border border-white/10 relative overflow-hidden">
+                  <img
+                    src="/home/image.webp"
+                    alt="Signature visuelle XKSPROD"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="absolute inset-0 dot-matrix opacity-25" />
+                  <div className="absolute bottom-5 left-6">
+                    <div className="pill text-xs text-white/80">Studio actif depuis 12+ ans</div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  {['12+ ans', '60+ projets', 'Europe'].map((item) => (
+                    <div key={item} className="card glass p-4 text-center text-sm">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-16 md:pb-24">
+        <div className="grid gap-4 md:grid-cols-3">
+          {services.map((service) => (
+            <article key={service.title} className="card glass p-6 stack-md hover-rise">
+              <h2 className="text-xl">{service.title}</h2>
+              <p className="text-white/75">{service.desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {service.tags.map((tag) => (
+                  <span key={tag} className="pill text-[11px] text-white/65">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="container pb-16 md:pb-24">
+        <div className="grid gap-8 lg:grid-cols-[0.6fr_0.4fr] items-start">
+          <div className="stack-lg">
+            <span className="eyebrow">Notre histoire</span>
+            <h2 className="title-display text-4xl md:text-5xl max-w-[54rem]">{companyStory.title}</h2>
+            <p className="lead">{companyStory.body}</p>
+            <p className="text-white/75 text-lg">{companyStory.body2}</p>
+          </div>
+          <aside className="card glass p-6 stack-md">
+            <h3 className="text-2xl">Ce qui fait la différence</h3>
+            <ul className="stack-sm text-white/75">
+              <li>Équipe senior multidisciplinaire</li>
+              <li>Direction artistique forte et cohérente</li>
+              <li>Exécution rapide, propre, mesurable</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section className="container pb-20 md:pb-28">
+        <div className="stack-lg">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span className="eyebrow">Méthode</span>
+              <h2 className="title-display text-4xl md:text-5xl">Un process clair, sans friction.</h2>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, idx) => (
+              <article key={step.title} className="card glass p-5 stack-sm">
+                <span className="text-xs uppercase tracking-[0.2em] text-xks-gold">0{idx + 1}</span>
+                <h3 className="text-xl">{step.title}</h3>
+                <p className="text-white/70">{step.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-20 md:pb-28">
+        <div className="stack-lg">
+          <div className="flex items-end justify-between gap-4 flex-wrap">
+            <div>
+              <span className="eyebrow">Réalisations</span>
+              <h2 className="title-display text-4xl md:text-5xl">Formats produits par XKSPROD</h2>
+            </div>
+            <Link href="/posts" className="btn-ghost rounded-full px-4 py-2 text-xs uppercase tracking-[0.2em]">
+              Voir tout
+            </Link>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-3">
+            {works.map((work) => (
+              <article key={work.title} className="work-card group">
+                <div className="work-media">
+                  <img src={work.image} alt={work.title} className="work-image" />
+                </div>
+                <div className="work-content">
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/55">{work.meta}</p>
+                  <h3 className="text-2xl">{work.title}</h3>
+                  <p className="text-white/70">{work.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-20 md:pb-28">
+        <div className="stack-lg">
+          <div className="flex items-end justify-between gap-4 flex-wrap">
+            <div>
+              <span className="eyebrow">Artistes à l’affiche</span>
+              <h2 className="title-display text-4xl md:text-5xl">Talents accompagnés</h2>
+            </div>
+            <Link href="/artistes" className="btn-ghost rounded-full px-4 py-2 text-xs uppercase tracking-[0.2em]">
+              Voir la page artistes
+            </Link>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {featuredArtists.map((artist) => (
+              <article key={artist.slug} className="artist-card card glass p-4 stack-sm">
+                <ArtistPhoto src={artist.photo} alt={artist.name} fallback={artist.name} className="artist-photo h-64" />
+                <div className="stack-xs">
+                  <h3 className="text-xl">{artist.name}</h3>
+                  <p className="text-sm uppercase tracking-[0.18em] text-white/55">{artist.role}</p>
+                  <p className="text-white/75 text-sm">{artist.shortBio}</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {(artist.highlights || []).slice(0, 2).map((item) => (
+                    <span key={item} className="pill text-[11px] text-white/65">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href={`/artistes/${artist.slug}`}
+                  className="btn-ghost rounded-full px-4 py-2 text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2"
+                >
+                  Voir profil <ExternalLink size={14} />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-20 md:pb-28">
+        <div className="grid gap-5 md:grid-cols-2">
+          {testimonials.map((item) => (
+            <blockquote key={item.name} className="card glass p-7">
+              <p className="text-xl leading-relaxed">“{item.quote}”</p>
+              <footer className="mt-5 text-sm uppercase tracking-[0.18em] text-xks-gold">{item.name}</footer>
+            </blockquote>
+          ))}
+        </div>
+      </section>
+
+      <section className="container pb-20 md:pb-28">
+        <div className="card gradient-border p-[1px] rounded-[1.5rem]">
+          <div className="rounded-[1.45rem] bg-black/65 p-8 md:p-10 stack-lg">
+            <div>
+              <span className="eyebrow">Formats d’accompagnement</span>
+              <h2 className="title-display text-4xl md:text-5xl">Choisis le rythme qui colle à ton projet.</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {offerTiers.map((tier) => (
+                <article key={tier.name} className="card glass p-5 stack-sm">
+                  <h3 className="text-2xl">{tier.name}</h3>
+                  <p className="text-xks-gold text-sm uppercase tracking-[0.2em]">{tier.duration}</p>
+                  <p className="text-white/75">{tier.fit}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-20 md:pb-28">
+        <div className="stack-lg">
+          <div>
+            <span className="eyebrow">Partenaires</span>
+            <h2 className="title-display text-4xl md:text-5xl">Ils font confiance à XKSPROD</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {partners.map((partner) => (
+              <PartnerLogo
+                key={partner.name}
+                alt={`${partner.name} logo`}
+                mark={partner.mark}
+                src={partner.logo}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-24 md:pb-32">
+        <div className="stack-lg max-w-[56rem]">
+          <div>
+            <span className="eyebrow">FAQ</span>
+            <h2 className="title-display text-4xl md:text-5xl">Questions fréquentes</h2>
+          </div>
+          <div className="grid gap-3">
+            {faqItems.map((item) => (
+              <details key={item.q} className="card glass p-5 group">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-4">
+                  <span className="text-lg">{item.q}</span>
+                  <span className="text-xks-gold text-xs uppercase tracking-[0.2em] group-open:rotate-45 transition-transform">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-white/75">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-24 md:pb-36">
+        <div className="cta-band stack-md text-center md:text-left md:flex md:items-center md:justify-between md:gap-8">
+          <div className="stack-sm">
+            <span className="eyebrow">Prêt à produire quelque chose d’unique ?</span>
+            <h2 className="title-display text-3xl md:text-4xl">On transforme ton idée en expérience marquante.</h2>
+          </div>
+          <div className="flex flex-wrap gap-3 justify-center md:justify-end">
+            <Link href="/contact" className="btn-gold rounded-full px-6 py-3 text-xs uppercase tracking-[0.22em]">
+              Démarrer maintenant
+            </Link>
+            <Link href="/posts" className="btn-ghost rounded-full px-6 py-3 text-xs uppercase tracking-[0.22em]">
+              Voir nos productions
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
