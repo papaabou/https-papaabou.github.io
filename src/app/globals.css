@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@config "../../../tailwind.config.mjs";
+@config "../../tailwind.config.mjs";
 
 @custom-variant dark (&:is([data-theme='dark'] *));
 @custom-variant sm (@media (width >= theme(--breakpoint-sm)));
@@ -893,6 +893,52 @@ html[data-theme="light"] {
       linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.32)),
       radial-gradient(380px 120px at 10% 0%, rgba(241,155,50,0.18), transparent 62%);
     pointer-events: none;
+  }
+  .production-card {
+    border-radius: calc(var(--radius-xl) + 0.05rem);
+    border: 1px solid rgba(255,255,255,0.12);
+    overflow: hidden;
+    background:
+      radial-gradient(520px 180px at 100% 0%, rgba(241,155,50,0.12), transparent 62%),
+      linear-gradient(145deg, rgba(8,8,8,0.96), rgba(2,2,2,0.99));
+    box-shadow: 0 20px 70px rgba(0,0,0,0.56);
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  }
+  .production-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(241,155,50,0.3);
+    box-shadow: 0 28px 90px rgba(0,0,0,0.62), 0 0 0 1px rgba(241,155,50,0.12) inset;
+  }
+  .production-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.02);
+  }
+  .production-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .production-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(241,155,50,0.35);
+    background: rgba(0,0,0,0.65);
+    color: var(--xks-gold);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    padding: 0.35rem 0.55rem;
+    font-weight: 700;
+  }
+  .production-content {
+    padding: 1rem 1.05rem 1.15rem;
+    display: grid;
+    gap: 0.45rem;
   }
   .contact-side-panel {
     border-radius: calc(var(--radius-xl) + 0.05rem);

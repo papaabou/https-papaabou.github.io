@@ -6,16 +6,15 @@ type Props = {
   alt: string
   mark: string
   src?: string
+  href?: string
 }
 
-export const PartnerLogo: React.FC<Props> = ({ alt, mark, src }) => {
+export const PartnerLogo: React.FC<Props> = ({ alt, mark, src, href }) => {
   const [broken, setBroken] = React.useState(false)
 
-  if (!src || broken) {
-    return <div className="partner-mark">{mark}</div>
-  }
-
-  return (
+  const content = !src || broken ? (
+    <div className="partner-mark">{mark}</div>
+  ) : (
     <div className="partner-logo-wrap">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -28,4 +27,14 @@ export const PartnerLogo: React.FC<Props> = ({ alt, mark, src }) => {
       />
     </div>
   )
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noreferrer" className="partner-card">
+        {content}
+      </a>
+    )
+  }
+
+  return content
 }

@@ -11,7 +11,7 @@ import { usePathname, useRouter } from 'next/navigation'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const [isOpen, setIsOpen] = React.useState(false)
-  const [isPrestationsOpen, setIsPrestationsOpen] = React.useState(false)
+  const [isServicesOpen, setIsServicesOpen] = React.useState(false)
   const [searchOpen, setSearchOpen] = React.useState(false)
   const [searchValue, setSearchValue] = React.useState('')
   const searchPanelRef = React.useRef<HTMLDivElement | null>(null)
@@ -22,7 +22,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
   React.useEffect(() => {
     setIsOpen(false)
-    setIsPrestationsOpen(false)
+    setIsServicesOpen(false)
     setSearchOpen(false)
   }, [pathname])
 
@@ -67,29 +67,25 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const mainLinks = [
     { label: 'Accueil', href: '/' },
     { label: 'A propos', href: '/a-propos' },
-    { label: 'Services', href: '/#services' },
-    { label: 'Partenaires', href: '/#partenaires' },
     { label: 'Productions', href: '/#productions' },
     { label: 'Artistes', href: '/artistes' },
     { label: 'Contact', href: '/contact' },
   ]
-  const prestationsSubLinks = [
-    { label: 'Conseil stratégique', href: '/prestations#conseil-strategique' },
-    { label: 'Direction artistique', href: '/prestations#direction-artistique' },
-    { label: 'Production exécutive', href: '/prestations#production-executive' },
-    { label: 'Captation live', href: '/prestations#captation-live' },
-    { label: 'Post-production premium', href: '/prestations#post-production-premium' },
-    { label: 'Diffusion & amplification', href: '/prestations#diffusion-amplification' },
+  const servicesSubLinks = [
+    { label: 'Prestations', href: '/prestations' },
+    { label: 'Partenaires', href: '/#partenaires' },
   ]
+  const desktopNavLinkClass =
+    'relative inline-flex items-center py-1 text-white/80 transition-all duration-300 hover:text-xks-gold hover:[text-shadow:0_0_12px_rgba(219,178,74,0.45)] after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gradient-to-r after:from-transparent after:via-[#DBB24A] after:to-transparent after:transition-transform after:duration-300 hover:after:scale-x-100'
 
   return (
     <div className="relative">
-      <nav className="hidden md:flex gap-6 items-center text-xs uppercase tracking-[0.22em] text-white/80">
-        {mainLinks.slice(0, 3).map((item) => (
+      <nav className="hidden md:flex gap-6 items-center text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+        {mainLinks.slice(0, 2).map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="hover:text-xks-gold transition-colors"
+            className={desktopNavLinkClass}
             data-track-event="header_nav_click"
             data-track-location="header_desktop"
             data-track-label={item.label.toLowerCase().replace(/\s+/g, '_')}
@@ -99,22 +95,22 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         ))}
         <div className="header-submenu-group">
           <Link
-            href="/prestations"
-            className="hover:text-xks-gold transition-colors"
+            href="/#services"
+            className={desktopNavLinkClass}
             data-track-event="header_nav_click"
             data-track-location="header_desktop"
-            data-track-label="prestations"
+            data-track-label="services"
           >
-            Prestations
+            Services
           </Link>
           <div className="header-submenu">
-            {prestationsSubLinks.map((item) => (
+            {servicesSubLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="header-submenu-link"
                 data-track-event="header_nav_click"
-                data-track-location="header_desktop_prestations"
+                data-track-location="header_desktop_services"
                 data-track-label={item.label.toLowerCase().replace(/\s+/g, '_')}
               >
                 {item.label}
@@ -122,11 +118,11 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
             ))}
           </div>
         </div>
-        {mainLinks.slice(3).map((item) => (
+        {mainLinks.slice(2).map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="hover:text-xks-gold transition-colors"
+            className={desktopNavLinkClass}
             data-track-event="header_nav_click"
             data-track-location="header_desktop"
             data-track-label={item.label.toLowerCase().replace(/\s+/g, '_')}
@@ -140,7 +136,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
               key={i}
               {...link}
               appearance="link"
-              className="hover:text-xks-gold transition-colors"
+              className={desktopNavLinkClass}
             />
           )
         })}
@@ -176,7 +172,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       {isOpen && (
         <div className="mobile-menu-float" ref={mobileMenuRef}>
           <nav className="mobile-menu-panel">
-            {mainLinks.slice(0, 3).map((item) => (
+            {mainLinks.slice(0, 2).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -191,23 +187,23 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
             <button
               type="button"
               className="mobile-submenu-trigger"
-              onClick={() => setIsPrestationsOpen((prev) => !prev)}
+              onClick={() => setIsServicesOpen((prev) => !prev)}
               data-track-event="header_nav_click"
               data-track-location="header_mobile"
-              data-track-label="prestations_submenu"
+              data-track-label="services_submenu"
             >
-              Prestations
-              <span aria-hidden>{isPrestationsOpen ? '−' : '+'}</span>
+              Services
+              <span aria-hidden>{isServicesOpen ? '−' : '+'}</span>
             </button>
-            {isPrestationsOpen && (
+            {isServicesOpen && (
               <div className="mobile-submenu-list">
-                {prestationsSubLinks.map((item) => (
+                {servicesSubLinks.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     className="mobile-submenu-link"
                     data-track-event="header_nav_click"
-                    data-track-location="header_mobile_prestations"
+                    data-track-location="header_mobile_services"
                     data-track-label={item.label.toLowerCase().replace(/\s+/g, '_')}
                   >
                     {item.label}
@@ -215,7 +211,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 ))}
               </div>
             )}
-            {mainLinks.slice(3).map((item) => (
+            {mainLinks.slice(2).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

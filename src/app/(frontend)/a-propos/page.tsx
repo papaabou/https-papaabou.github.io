@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const values = [
   {
-    title: '12+ ans d’expérience',
+    title: '15+ ans d’expérience',
     text: 'Plus d’une décennie de production d’artistes et de spectacles avec un niveau d’exigence constant.',
   },
   {
@@ -30,8 +30,17 @@ export default function AboutPage() {
           <div className="stack-lg">
             <span className="eyebrow">A propos</span>
             <h1 className="text-3xl md:text-5xl tracking-tight">Le studio derrière XKSPROD.</h1>
+            <div className="card glass p-3">
+              <div className="overflow-hidden rounded-[0.9rem] border border-white/10">
+                <img
+                  src="/home/imagexksnoirglod.jpg"
+                  alt="XKSPROD Entertainment"
+                  className="h-[13rem] w-full object-cover md:h-[16rem]"
+                />
+              </div>
+            </div>
             <p className="lead">
-              La société XKSPROD est spécialisée depuis plus de 12 ans dans la production d’artistes et de spectacles.
+              La société XKSPROD est spécialisée depuis plus de 15 ans dans la production d’artistes et de spectacles.
             </p>
             <p className="lead">
               XKSPROD réunit des professionnels ayant une grande expérience dans leur domaine, avec une
@@ -50,7 +59,7 @@ export default function AboutPage() {
                 Nous contacter
               </Link>
               <Link
-                href="/posts"
+                href="/productions"
                 className="btn-ghost inline-flex items-center justify-center rounded-full px-6 py-3 text-xs uppercase tracking-[0.22em]"
               >
                 Voir les productions

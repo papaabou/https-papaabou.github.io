@@ -5,6 +5,7 @@ import { ExternalLink } from 'lucide-react'
 import { PartnerLogo } from '@/components/PartnerLogo'
 import { ArtistPhoto } from '@/components/ArtistPhoto'
 import { featuredArtists } from '@/data/artists'
+import { productions } from '@/data/productions'
 
 export const metadata: Metadata = {
   title: 'XKSPROD | Studio premium audiovisuel & artistique',
@@ -31,7 +32,7 @@ const services = [
 ]
 
 const companyStory = {
-  title: 'Depuis plus de 10 ans, nous produisons des artistes et des spectacles qui marquent.',
+  title: 'Depuis plus de 15 ans, nous produisons des artistes et des spectacles qui marquent.',
   body:
     'XKSPROD réunit des professionnels expérimentés, tous guidés par la même exigence: vous écouter, comprendre vos besoins et créer l’outil de communication qui vous correspond réellement.',
   body2:
@@ -54,27 +55,6 @@ const steps = [
   {
     title: 'Amplification & durée',
     body: 'Des livrables optimisés pour durer, se décliner et amplifier votre impact sur le long terme.',
-  },
-]
-
-const works = [
-  {
-    title: 'Le Samba Show — Églingué le Cinéma',
-    meta: 'Show événementiel · Mars 2013 · Folies Bergère',
-    desc: 'Production complète du show, direction artistique, coordination plateau et communication visuelle.',
-    image: '/home/works/prod11.jpg',
-  },
-  {
-    title: 'Le Samba Show — Dîner Spectacle',
-    meta: 'Format premium · Décembre 2014 · Cabaret Sauvage',
-    desc: 'Concept événementiel premium mêlant scène, ambiance et expérience immersive à forte valeur public.',
-    image: '/home/works/prod12.jpg',
-  },
-  {
-    title: 'Dakar Fait Sa Comedy',
-    meta: 'Grand format humour · Mars 2018 · Dakar',
-    desc: 'Production show de grande audience, orchestration artistique et déploiement de communication terrain + digital.',
-    image: '/home/works/prod14.png',
   },
 ]
 
@@ -194,7 +174,7 @@ export default function HomePage() {
 
               <div className="stack-lg">
                 <h1 className="title-display tracking-tight">
-                  XKSPROD, depuis plus de 12 ans, nous produisons des artistes et des spectacles.
+                  XKSPROD, depuis plus de 15 ans, nous produisons des artistes et des spectacles.
                 </h1>
                 <p className="lead max-w-[38rem]">
                   Une équipe de professionnels expérimentés à votre écoute, pour créer l’outil de
@@ -213,7 +193,7 @@ export default function HomePage() {
                   Démarrer un projet
                 </Link>
                 <Link
-                  href="/posts"
+                  href="/productions"
                   className="btn-ghost inline-flex items-center justify-center rounded-full px-6 py-3 text-sm tracking-wide"
                   data-track-event="hero_cta_click"
                   data-track-location="hero"
@@ -224,7 +204,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.22em] text-white/60">
-                <span>12+ ans d’expertise</span>
+                <span>15+ ans d’expertise</span>
                 <span>Écoute client</span>
                 <span>Accompagnement sur-mesure</span>
                 <span>Événements uniques</span>
@@ -250,11 +230,11 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-black/30" />
                   <div className="absolute inset-0 dot-matrix opacity-25" />
                   <div className="absolute bottom-5 left-6">
-                    <div className="pill text-xs text-white/80">Studio actif depuis 12+ ans</div>
+                    <div className="pill text-xs text-white/80">Studio actif depuis 15+ ans</div>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-3">
-                  {['12+ ans', '60+ projets', 'Europe'].map((item) => (
+                  {['15+ ans', '60+ projets', 'Europe'].map((item) => (
                     <div key={item} className="card glass p-4 text-center text-sm">
                       {item}
                     </div>
@@ -330,13 +310,13 @@ export default function HomePage() {
               <span className="eyebrow">Réalisations</span>
               <h2 className="title-display text-4xl md:text-5xl">Formats produits par XKSPROD</h2>
             </div>
-            <Link href="/posts" className="btn-ghost rounded-full px-4 py-2 text-xs uppercase tracking-[0.2em]">
+            <Link href="/productions" className="btn-ghost rounded-full px-4 py-2 text-xs uppercase tracking-[0.2em]">
               Voir tout
             </Link>
           </div>
 
           <div className="grid gap-5 lg:grid-cols-3">
-            {works.map((work) => (
+            {productions.slice(0, 6).map((work) => (
               <article key={work.title} className="work-card group">
                 <div className="work-media">
                   <img src={work.image} alt={work.title} className="work-image" />
@@ -436,6 +416,7 @@ export default function HomePage() {
                 alt={`${partner.name} logo`}
                 mark={partner.mark}
                 src={partner.logo}
+                href={partner.href}
               />
             ))}
           </div>
@@ -474,7 +455,7 @@ export default function HomePage() {
             <Link href="/contact" className="btn-gold rounded-full px-6 py-3 text-xs uppercase tracking-[0.22em]">
               Démarrer maintenant
             </Link>
-            <Link href="/posts" className="btn-ghost rounded-full px-6 py-3 text-xs uppercase tracking-[0.22em]">
+            <Link href="/productions" className="btn-ghost rounded-full px-6 py-3 text-xs uppercase tracking-[0.22em]">
               Voir nos productions
             </Link>
           </div>

@@ -182,7 +182,7 @@ export default function PrestationsPage() {
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {[
-                  { value: '12+ ans', label: 'd’expertise terrain' },
+                  { value: '15+ ans', label: 'd’expertise terrain' },
                   { value: '60+ projets', label: 'pilotés en premium' },
                   { value: '24-48h', label: 'pour un premier cadrage' },
                 ].map((item) => (
